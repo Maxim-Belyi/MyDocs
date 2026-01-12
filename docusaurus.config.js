@@ -3,22 +3,22 @@ import {themes as prismThemes} from 'prism-react-renderer';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Мой полезный сайт',
-  tagline: 'Здесь буду собраны обучающие материалы которые я посчитал полезными для изучения',
+  title: 'Полезный сайт',
+  tagline: 'Здесь буду собраны обучающие материалы которые я посчитал полезными',
   favicon: 'img/favicon.ico',
 
   future: {
     v4: true, 
   },
 
-  url: 'https://your-docusaurus-site.example.com',
+  url: 'https://maxim-belyi.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/MyDocs/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'Максим Белый', // Usually your GitHub org/user name.
+  organizationName: 'maxim-belyi', // Usually your GitHub org/user name.
   projectName: 'MyDocs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -73,7 +73,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Моя база знаний',
+        title: 'Полезный сайт',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo2.webp',
