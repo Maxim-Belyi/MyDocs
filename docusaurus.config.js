@@ -4,7 +4,7 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Полезный сайт',
-  tagline: 'Здесь буду собраны обучающие материалы которые я посчитал полезными',
+  tagline: 'Здесь будут собраны обучающие материалы, которые я посчитал полезными',
   favicon: 'img/favicon.ico',
 
   future: {
@@ -71,7 +71,7 @@ const config = {
       {
         id: 'git', // Уникальный ID для секции Git
         path: 'Git', // Папка с контентом
-        routeBasePath: 'git', // URL будет site.com/git/..
+        routeBasePath: 'git', 
         sidebarPath: './sidebarsGit.js', // Путь к файлу с боковым меню для Git
       },
     ],
@@ -79,7 +79,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'golang', // Уникальный ID для секции Golang
-        path: 'Golang', // Папка с контентом
+        path: 'Golang', 
         routeBasePath: 'golang', // URL будет site.com/golang/..
         sidebarPath: './sidebarsGolang.js', // Путь к файлу с боковым меню для Golang
       },
