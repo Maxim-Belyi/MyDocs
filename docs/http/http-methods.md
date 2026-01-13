@@ -3,7 +3,7 @@ sidebar_position: 5
 ---
 
 
-#### **5. Основные методы HTTP-запросов?**
+#### ** Основные методы HTTP-запросов?**
 
 
 Методы HTTP указывают, какое действие клиент хочет совершить с ресурсом на сервере. Самые распространенные из них:
@@ -13,3 +13,13 @@ sidebar_position: 5
 *   **PUT:** Используется для полного обновления существующего ресурса на сервере.
 *   **DELETE:** Используется для удаления указанного ресурса.
 *   **HEAD:** Аналогичен GET, но сервер в ответ присылает только заголовки, без тела ответа. Это полезно для проверки существования ресурса без его скачивания.
+
+# Пример
+```http
+GET /index.html HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.82 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Accept-Language: ru-RU,ru;q=0.9
+Connection: close
+```
