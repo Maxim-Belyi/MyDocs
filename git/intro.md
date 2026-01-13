@@ -3,7 +3,7 @@ sidebar_position: 1
 ---
 
 # Что то про Git
-
+<img src="../img/git.png" width="200px"></img>
 <br/>
 <p align="left">🔗 Связаться со мной:</p>
 <p align="left">

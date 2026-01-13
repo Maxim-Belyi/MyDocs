@@ -5,7 +5,7 @@ sidebar_position: 1
 
 ### Вопросы и ответы: Основные команды Git
 
-#### **1. Настройка и создание репозитория**
+#### ** Настройка и создание репозитория**
 
 *   `git config --global user.name "Your Name"`
     `git config --global user.email "youremail@example.com"`
