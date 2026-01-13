@@ -44,7 +44,7 @@ const config = {
             'https://github.com/Maxim-Belyi/MyDocs/tree/main/',
         },
         blog: {
-          showReadingTime: true,
+          showReadingTime: false,
           feedOptions: {
             type: ['rss', 'atom'],
             xslt: true,
@@ -65,6 +65,26 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'git', // Уникальный ID для секции Git
+        path: 'Git', // Папка с контентом
+        routeBasePath: 'git', // URL будет site.com/git/..
+        sidebarPath: './sidebarsGit.js', // Путь к файлу с боковым меню для Git
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'golang', // Уникальный ID для секции Golang
+        path: 'Golang', // Папка с контентом
+        routeBasePath: 'golang', // URL будет site.com/golang/..
+        sidebarPath: './sidebarsGolang.js', // Путь к файлу с боковым меню для Golang
+      },
+    ],
+  ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -73,7 +93,7 @@ const config = {
         respectPrefersColorScheme: true,
       },
       navbar: {
-        title: 'Полезный сайт',
+        title: 'Knowledge hub',
         logo: {
           alt: 'My Site Logo',
           src: 'img/logo2.webp',
@@ -85,7 +105,10 @@ const config = {
             position: 'left',
             label: 'Общие',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+     
+          {to: '/golang/intro', label: 'GoLang', position: 'left'},
+      
+          {to: '/git/intro', label: 'Git', position: 'left'},
           {
             href: 'https://github.com/Maxim-Belyi',
             label: 'GitHub',
