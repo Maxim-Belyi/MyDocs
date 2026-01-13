@@ -103,7 +103,7 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Общие',
+            label: 'База',
           },
      
           {to: '/golang/intro', label: 'GoLang', position: 'left'},

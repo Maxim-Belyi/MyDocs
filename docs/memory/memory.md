@@ -1,5 +1,5 @@
 ---
-sidebar_position: 65
+sidebar_position: 1
 ---
 
 #### **6. Что такое память?**
