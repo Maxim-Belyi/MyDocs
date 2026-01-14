@@ -2,7 +2,7 @@
 sidebar_position: 3
 ---
 
-#### ** Как работает HTTPS шифрование?**
+# Как работает HTTPS шифрование?**
 
 
 HTTPS использует криптографический протокол SSL (Secure Sockets Layer) или его более современную версию TLS (Transport Layer Security) для защиты соединения.
