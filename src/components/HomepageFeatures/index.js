@@ -29,7 +29,6 @@ const FeatureList = [
   
 ];
 
-
 function Feature({image, isSvg, title, description}) {
   const ImgComponent = image; 
   return (
