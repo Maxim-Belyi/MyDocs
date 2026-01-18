@@ -5,36 +5,28 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Базовая база',
 
-    image: require('@site/static/img/logo2.webp').default,
-    isSvg: false, 
-    description: (
-      <>
-        Общие знания
-      </>
-    ),
+    image: require('@site/static/img/knowledge.svg').default,
+    isSvg: true, 
   },
   {
     title: 'GIT',
-    image: require('@site/static/img/git.png').default,
-    isSvg: false, 
-    description: (
-      <>
-        Материалы по GIT
-      </>
-    ),
+    image: require('@site/static/img/git.svg').default,
+    isSvg: true, 
+  
   },
   {
     title: 'Golang',
-    image: require('@site/static/img/golang.png').default,
-    isSvg: false, 
-    description: (
-      <>
-        Материалы по GoLang
-      </>
-    ),
+    image: require('@site/static/img/golang.svg').default,
+    isSvg: true, 
   },
+    {
+    title: 'SQL',
+    image: require('@site/static/img/mysql.svg').default,
+    isSvg: true, 
+  },
+  
 ];
 
 
