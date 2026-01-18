@@ -69,19 +69,28 @@ const config = {
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'git', // Уникальный ID для секции Git
-        path: 'Git', // Папка с контентом
+        id: 'git', 
+        path: 'Git', 
         routeBasePath: 'git', 
-        sidebarPath: './sidebarsGit.js', // Путь к файлу с боковым меню для Git
+        sidebarPath: './sidebarsGit.js', 
+      },
+    ],
+        [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'sqlSidebar', 
+        path: 'SQL', 
+        routeBasePath: 'sql', 
+        sidebarPath: './sidebarsSQL.js', 
       },
     ],
     [
       '@docusaurus/plugin-content-docs',
       {
-        id: 'golang', // Уникальный ID для секции Golang
+        id: 'golang', 
         path: 'Golang', 
-        routeBasePath: 'golang', // URL будет site.com/golang/..
-        sidebarPath: './sidebarsGolang.js', // Путь к файлу с боковым меню для Golang
+        routeBasePath: 'golang', 
+        sidebarPath: './sidebarsGolang.js', 
       },
     ],
   ],
@@ -109,6 +118,13 @@ const config = {
           {to: '/golang/intro', label: 'GoLang', position: 'left'},
       
           {to: '/git/intro', label: 'Git', position: 'left'},
+          {
+            sidebarId: 'sqlSidebar',
+            position: 'left',
+            to: '/sql/intro',
+            label: 'SQL',
+          },
+        //  {type:'docSidebar', sidebarId: 'sqlSidebar', to: '/sql/intro', label:'SQL', position:'left'},
           {
             href: 'https://github.com/Maxim-Belyi',
             label: 'GitHub',
