@@ -10,13 +10,7 @@
 Проект появился из необходимости иметь удобно структурированное место для хранения информации которую я изучаю, а писать в заметки как-то не солидно.
 
 ## 🛠️ Стек технологий
-
-<img src="https://img.shields.io/badge/Docusaurus-3578e5?style=flat&logo=docusaurus&logoColor=white" alt="Docusaurus"/>
-<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"/>
-<img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"/>
-<img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white" alt="Sass"/>
-<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript"/>
-<img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React"/>
+<div> <img src="https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white" alt="HTML5"/> <img src="https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white" alt="CSS3"/> <img src="https://img.shields.io/badge/Sass-CC6699?style=flat&logo=sass&logoColor=white" alt="Sass"/> <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript"/> <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React"/> <img src="https://img.shields.io/badge/Docusaurus-3578e5?style=flat&logo=docusaurus&logoColor=white" alt="Docusaurus"/> </div>
 
 ## ⚙️ Как запустить локально
 
@@ -52,7 +46,7 @@
 
 ## 📝 Как добавлять новый контент
 
-*   **Новые статьи:** Создайте новый `.md` файл в папке `/docs`. Структура бокового меню генерируется автоматически на основе файловой структуры в этой папке.
+*   **Новые статьи:** Создайте новый `.md` файл в соответствующей папке. Структура бокового меню генерируется автоматически на основе файловой структуры в этой папке.
 *   **Изображения:** Храните все изображения в папке `/static/img` и ссылайтесь на них в Markdown, используя путь `/img/your-image.png`.
 *   **Главная навигация:** Редактируется в файле `docusaurus.config.js` в секции `themeConfig.navbar`.
 *   **Стили:** Глобальные стили можно переопределить или добавить в файле `/src/css/custom.css`.
