@@ -1,11 +1,14 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import docsearch from '@docsearch/js';
+import '@docsearch/css';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Полезный сайт',
   tagline: 'Здесь будут собраны обучающие материалы, которые я посчитал полезными',
   favicon: 'img/favicon.ico',
+
 
   future: {
     v4: true, 
@@ -63,7 +66,15 @@ const config = {
         },
       }),
     ],
+    
   ],
+
+   algolia: {
+      appId: 'Z8AH77ITKY',
+      apiKey: '589b5719b9ed7f17a020d64831c3fa3e',
+      indexName: 'useful documentation', // Или то имя, которое вам выдала Algolia
+      contextualSearch: true,
+    },
 
   plugins: [
     [
@@ -140,6 +151,8 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+
+    
 };
 
 export default config;
