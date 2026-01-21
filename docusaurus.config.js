@@ -1,7 +1,7 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
-import docsearch from '@docsearch/js';
-import '@docsearch/css';
+// import docsearch from '@docsearch/js';
+// import '@docsearch/css';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -69,12 +69,7 @@ const config = {
     
   ],
 
-   algolia: {
-      appId: 'Z8AH77ITKY',
-      apiKey: '589b5719b9ed7f17a020d64831c3fa3e',
-      indexName: 'useful documentation', // Или то имя, которое вам выдала Algolia
-      contextualSearch: true,
-    },
+ 
 
   plugins: [
     [
@@ -108,6 +103,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
+
+      algolia: {
+      appId: 'Z8AH77ITKY',
+      apiKey: '589b5719b9ed7f17a020d64831c3fa3e',
+      indexName: 'useful documentation',
+      contextualSearch: true,
+    },
       image: 'img/logo2.webp',
       colorMode: {
         respectPrefersColorScheme: true,
@@ -150,6 +152,8 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
+
+  
     }),
 
     
