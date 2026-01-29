@@ -78,7 +78,6 @@ const config = {
 
   plugins: [
     [
-      '@docusaurus/plugin-sitemap',
       '@docusaurus/plugin-content-docs',
       {
         id: 'git', 
