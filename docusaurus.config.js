@@ -78,11 +78,10 @@ const config = {
 
   plugins: [
     [
-      '@docusaurus/plugin-sitemap',
       '@docusaurus/plugin-content-docs',
       {
         id: 'git', 
-        path: 'Git', 
+        path: 'git', 
         routeBasePath: 'git', 
         sidebarPath: './sidebarsGit.js', 
       },
@@ -91,7 +90,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'sqlSidebar', 
-        path: 'SQL', 
+        path: 'sql', 
         routeBasePath: 'sql', 
         sidebarPath: './sidebarsSQL.js', 
       },
@@ -100,7 +99,7 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'golang', 
-        path: 'Golang', 
+        path: 'golang', 
         routeBasePath: 'golang', 
         sidebarPath: './sidebarsGolang.js', 
       },
