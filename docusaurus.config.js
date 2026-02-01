@@ -70,8 +70,10 @@ const config = {
 
   plugins: [
     [
-      require.resolve("docusaurus-plugin-search-local"),
+      require.resolve("@easyops-cn/docusaurus-search-local"),
       {
+        language: ["ru", "en"],
+        hashed: true,
         highlightSearchTermsOnTargetPage: true,
         searchResultLimits: 8,
         searchResultContextMaxLength: 50,
