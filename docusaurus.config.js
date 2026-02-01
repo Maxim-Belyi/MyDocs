@@ -111,7 +111,7 @@ const config = {
 
       algolia: {
       appId: 'Z8AH77ITKY',
-      apiKey: '589b5719b9ed7f17a020d64831c3fa3e',
+      apiKey: '941fece86c7c807e3a3a0ab3651cbb58',
       indexName: 'useful documentation',
       contextualSearch: true,
     },
