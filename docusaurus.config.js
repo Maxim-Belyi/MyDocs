@@ -9,7 +9,6 @@ const config = {
   tagline: 'Здесь будут собраны обучающие материалы, которые я посчитал полезными',
   favicon: 'img/favicon.ico',
 
-
   future: {
     v4: true, 
   },
@@ -64,19 +63,20 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
-
-        sitemap: {
-          changefreq: 'weekly',
-          priority: 0.5,
-          ignorePatterns: ['/tags/**'],
-          filename: 'sitemap.xml',
-        },
       }),
     ],
     
   ],
 
   plugins: [
+    [
+      require.resolve("docusaurus-plugin-search-local"),
+      {
+        highlightSearchTermsOnTargetPage: true,
+        searchResultLimits: 8,
+        searchResultContextMaxLength: 50,
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
@@ -108,13 +108,6 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-
-      algolia: {
-      appId: 'Z8AH77ITKY',
-      apiKey: '941fece86c7c807e3a3a0ab3651cbb58',
-      indexName: 'useful documentation',
-      contextualSearch: true,
-    },
       image: 'img/logo2.webp',
       colorMode: {
         respectPrefersColorScheme: true,
@@ -157,11 +150,7 @@ const config = {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
       },
-
-  
     }),
-
-    
 };
 
 export default config;
