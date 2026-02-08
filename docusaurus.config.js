@@ -106,6 +106,15 @@ const config = {
         sidebarPath: './sidebarsGolang.js', 
       },
     ],
+     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'bitrixSidebar', 
+        path: 'bitrix', 
+        routeBasePath: 'bitrix', 
+        sidebarPath: './sidebarsBitrix.js', 
+      },
+    ],
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
@@ -137,6 +146,14 @@ const config = {
             to: '/sql/intro',
             label: 'SQL',
           },
+           {
+             type: 'docSidebar',
+            sidebarId: 'bitrixSidebar',  
+            docsPluginId: 'bitrixSidebar', 
+            position: 'left',
+            label: 'Bitrix',
+          },
+          // {to: '/bitrix/intro', label: 'Bitrix', position: 'left'},
         //  {type:'docSidebar', sidebarId: 'sqlSidebar', to: '/sql/intro', label:'SQL', position:'left'},
           {
             href: 'https://github.com/Maxim-Belyi',
