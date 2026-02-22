@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.9.2">
 <title data-rh="true">Инфоблоки (информационные блоки) | Полезный сайт</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://maxim-belyi.github.io/MyDocs/img/logo2.webp"><meta data-rh="true" name="twitter:image" content="https://maxim-belyi.github.io/MyDocs/img/logo2.webp"><meta data-rh="true" property="og:url" content="https://maxim-belyi.github.io/MyDocs/bitrix/infoblocks/"><meta data-rh="true" property="og:locale" content="ru"><meta data-rh="true" name="docusaurus_locale" content="ru"><meta data-rh="true" name="docsearch:language" content="ru"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-bitrixSidebar-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-bitrixSidebar-current"><meta data-rh="true" property="og:title" content="Инфоблоки (информационные блоки) | Полезный сайт"><meta data-rh="true" name="description" content="Инфоблоки это основной инструмент в «1С-Битрикс» для хранения и управления однородным контентом. Если упростить, это таблицы в SQL, где вы храните новости, товары, услуги или статьи"><meta data-rh="true" property="og:description" content="Инфоблоки это основной инструмент в «1С-Битрикс» для хранения и управления однородным контентом. Если упростить, это таблицы в SQL, где вы храните новости, товары, услуги или статьи"><link data-rh="true" rel="icon" href="/MyDocs/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://maxim-belyi.github.io/MyDocs/bitrix/infoblocks/"><link data-rh="true" rel="alternate" href="https://maxim-belyi.github.io/MyDocs/bitrix/infoblocks/" hreflang="ru"><link data-rh="true" rel="alternate" href="https://maxim-belyi.github.io/MyDocs/bitrix/infoblocks/" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Инфоблоки","item":"https://maxim-belyi.github.io/MyDocs/bitrix/category/инфоблоки"},{"@type":"ListItem","position":2,"name":"Инфоблоки (информационные блоки)","item":"https://maxim-belyi.github.io/MyDocs/bitrix/infoblocks/"}]}</script><link rel="stylesheet" href="/MyDocs/assets/css/styles.0f115797.css">
-<script src="/MyDocs/assets/js/runtime~main.657f5153.js" defer="defer"></script>
+<script src="/MyDocs/assets/js/runtime~main.383cf40c.js" defer="defer"></script>
 <script src="/MyDocs/assets/js/main.75717857.js" defer="defer"></script>
 </head>
 <body class="navigation-with-keyboard">
@@ -43,6 +43,239 @@
 <li class="">
 <p>Разделение прав: Доступ к чтению или редактированию каждого блока можно настроить индивидуально для разных групп пользователей.</p>
 </li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--prev" href="/MyDocs/bitrix/category/инфоблоки"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Инфоблоки</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/MyDocs/bitrix/infoblocks/infoblocksStructure"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">Структура таблиц Инфоблоков в 1С-Битрикс</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#структура-инфоблоков-имеет-четкую-иерархию" class="table-of-contents__link toc-highlight">Структура инфоблоков имеет четкую иерархию:</a></li><li><a href="#основные-возможности" class="table-of-contents__link toc-highlight">Основные возможности</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Built with Docusaurus.</div></div></div></footer></div>
+</ul>
+<p>Вот подробное описание стандартных полей элемента инфоблока, оформленное в требуемом стиле.</p>
+<p>Обрати внимание: это поля, которые физически находятся в таблице <code>b_iblock_element</code>. Свойства (Properties) — это отдельная сущность, и здесь они не рассматриваются.</p>
+<h1>Стандартные поля элемента инфоблока</h1>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-основные-идентификаторы-identity">1. Основные идентификаторы (Identity)<a href="#1-основные-идентификаторы-identity" class="hash-link" aria-label="Прямая ссылка на 1. Основные идентификаторы (Identity)" title="Прямая ссылка на 1. Основные идентификаторы (Identity)" translate="no">​</a></h3>
+<p>Это базовые поля, по которым система находит и отличает элементы друг от друга.</p>
+<ul>
+<li class=""><strong>ID:</strong>
+Уникальный числовой идентификатор элемента в базе данных (Primary Key). Создается автоматически при добавлении элемента.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;ID&#x27;]</code></li>
+<li class=""><em>Зачем:</em> Используется для удаления, обновления элемента или ссылок на него. Это единственный неизменный параметр.</li>
+</ul>
+</li>
+<li class=""><strong>NAME:</strong>
+Название элемента. Обязательное поле.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;NAME&#x27;]</code></li>
+<li class=""><em>Зачем:</em> Заголовок страницы, название товара в корзине, alt у картинок.</li>
+</ul>
+</li>
+<li class=""><strong>CODE (Символьный код):</strong>
+Уникальная (обычно) строка транслитом, например <code>iphone-15-pro</code>.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;CODE&#x27;]</code></li>
+<li class=""><em>Зачем:</em> Используется для формирования ЧПУ (красивых URL). Вместо <code>?id=123</code> вы видите <code>/catalog/iphone-15-pro/</code>.</li>
+</ul>
+</li>
+<li class=""><strong>XML_ID (Внешний код):</strong>
+Строковый идентификатор для связи с внешними системами.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;XML_ID&#x27;]</code> (в старом ядре назывался <code>EXTERNAL_ID</code>).</li>
+<li class=""><em>Зачем:</em> Критически важен при выгрузке из 1С. Если вы удалите элемент и создадите заново с тем же именем, но другим ID, 1С не узнает его. А по XML_ID — узнает и обновит, а не создаст дубль.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-контент-и-наполнение-content">2. Контент и наполнение (Content)<a href="#2-контент-и-наполнение-content" class="hash-link" aria-label="Прямая ссылка на 2. Контент и наполнение (Content)" title="Прямая ссылка на 2. Контент и наполнение (Content)" translate="no">​</a></h3>
+<p>Поля, отвечающие за текстовую и графическую информацию. Битрикс делит их на анонс (список) и детальное описание.</p>
+<ul>
+<li class=""><strong>PREVIEW_TEXT / DETAIL_TEXT:</strong>
+Текст анонса (для списка новостей/товаров) и Детальный текст (для карточки).<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;PREVIEW_TEXT&#x27;]</code> или <code>$arItem[&#x27;DETAIL_TEXT&#x27;]</code>.</li>
+<li class=""><em>Нюанс:</em> У этих полей есть пары: <code>PREVIEW_TEXT_TYPE</code> и <code>DETAIL_TEXT_TYPE</code>. Они принимают значения <code>text</code> или <code>html</code>. Если тип <code>text</code>, Битрикс экранирует HTML-теги при выводе.</li>
+</ul>
+</li>
+<li class=""><strong>PREVIEW_PICTURE / DETAIL_PICTURE:</strong>
+Картинка анонса и детальная картинка.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> В массиве поля (<code>$arItem[&#x27;PREVIEW_PICTURE&#x27;]</code>) лежит <strong>число (ID файла)</strong>.</li>
+<li class=""><em>Важно:</em> Чтобы получить путь к картинке (<code>/upload/...</code>), нужно использовать метод <code>CFile::GetPath($id)</code> или <code>CFile::ResizeImageGet(...)</code>. Напрямую вставить ID в тег <code>&lt;img&gt;</code> нельзя.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-логика-показа-и-сортировка-display-logic">3. Логика показа и Сортировка (Display Logic)<a href="#3-логика-показа-и-сортировка-display-logic" class="hash-link" aria-label="Прямая ссылка на 3. Логика показа и Сортировка (Display Logic)" title="Прямая ссылка на 3. Логика показа и Сортировка (Display Logic)" translate="no">​</a></h3>
+<p>Поля, определяющие, когда и в каком порядке выводить элемент.</p>
+<ul>
+<li class=""><strong>ACTIVE:</strong>
+Флаг активности. Принимает значения <code>Y</code> (да) или <code>N</code> (нет).<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;ACTIVE&#x27;]</code>.</li>
+<li class=""><em>Зачем:</em> Позволяет скрыть товар или новость с сайта, не удаляя его из базы. Стандартные компоненты автоматически фильтруют элементы, выбирая только <code>ACTIVE =&gt; &#x27;Y&#x27;</code>.</li>
+</ul>
+</li>
+<li class=""><strong>SORT:</strong>
+Числовой индекс сортировки. По умолчанию <code>500</code>.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;SORT&#x27;]</code>.</li>
+<li class=""><em>Зачем:</em> Чем меньше число, тем выше элемент в списке (при стандартной сортировке).</li>
+</ul>
+</li>
+<li class=""><strong>ACTIVE_FROM / ACTIVE_TO:</strong>
+Даты начала и окончания активности.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;ACTIVE_FROM&#x27;]</code>.</li>
+<li class=""><em>Логика:</em> Если текущая дата попадает в этот интервал + флаг <code>ACTIVE=&#x27;Y&#x27;</code>, элемент виден. Если дата <code>ACTIVE_TO</code> прошла — элемент автоматически пропадает с сайта (если компонент настроен на проверку дат).</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-структура-и-привязки-structure">4. Структура и Привязки (Structure)<a href="#4-структура-и-привязки-structure" class="hash-link" aria-label="Прямая ссылка на 4. Структура и Привязки (Structure)" title="Прямая ссылка на 4. Структура и Привязки (Structure)" translate="no">​</a></h3>
+<p>Где именно лежит элемент в иерархии сайта.</p>
+<ul>
+<li class=""><strong>IBLOCK_ID:</strong>
+ID инфоблока, которому принадлежит элемент.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;IBLOCK_ID&#x27;]</code>.</li>
+<li class=""><em>Зачем:</em> Чтобы понимать контекст, если вы делаете выборку сразу из нескольких инфоблоков.</li>
+</ul>
+</li>
+<li class=""><strong>IBLOCK_SECTION_ID:</strong>
+ID <strong>основного</strong> родительского раздела (папки).<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;IBLOCK_SECTION_ID&#x27;]</code>.</li>
+<li class=""><em>Проблема:</em> Один элемент может лежать в нескольких разделах. В этом поле хранится только <em>один</em> ID (обычно тот, который был выбран последним или основным). Для получения всех разделов нужно использовать <code>CIBlockElement::GetElementGroups</code>.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-служебная-информация-system-info">5. Служебная информация (System Info)<a href="#5-служебная-информация-system-info" class="hash-link" aria-label="Прямая ссылка на 5. Служебная информация (System Info)" title="Прямая ссылка на 5. Служебная информация (System Info)" translate="no">​</a></h3>
+<p>Автоматически обновляемые поля статистики и логирования.</p>
+<ul>
+<li class=""><strong>TIMESTAMP_X:</strong>
+Дата и время последнего изменения элемента.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;TIMESTAMP_X&#x27;]</code>.</li>
+<li class=""><em>Зачем:</em> Используется для генерации <code>Last-Modified</code> заголовков (важно для SEO) и сброса кеша.</li>
+</ul>
+</li>
+<li class=""><strong>SHOW_COUNTER:</strong>
+Счетчик просмотров элемента.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;SHOW_COUNTER&#x27;]</code>.</li>
+<li class=""><em>Нюанс:</em> Чтобы он работал, в настройках инфоблока должна стоять галочка &quot;Вести учет просмотров&quot;. Увеличивается при показе детальной страницы компонентом <code>catalog.element</code> или <code>news.detail</code>.</li>
+</ul>
+</li>
+<li class=""><strong>CREATED_BY / MODIFIED_BY:</strong>
+ID пользователя, который создал или изменил элемент.<!-- -->
+<ul>
+<li class=""><em>Как обращаться:</em> <code>$arItem[&#x27;CREATED_BY&#x27;]</code>.</li>
+<li class=""><em>Зачем:</em> Для аудита (кто сломал новость?) или для вывода автора статьи.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-краткая-памятка-по-получению-данных">6. Краткая памятка по получению данных<a href="#6-краткая-памятка-по-получению-данных" class="hash-link" aria-label="Прямая ссылка на 6. Краткая памятка по получению данных" title="Прямая ссылка на 6. Краткая памятка по получению данных" translate="no">​</a></h3>
+<p>В Битриксе есть два глобальных способа получить эти поля:</p>
+<ol>
+<li class="">
+<p><strong>Старое ядро (GetList):</strong>
+Возвращает данные в виде простых массивов.</p>
+<div class="language-php codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-php codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// $arItem - это просто массив</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo $arItem[&#x27;NAME&#x27;]; </span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo $arItem[&#x27;PREVIEW_TEXT&#x27;];</span><br></span></code></pre></div></div>
+</li>
+<li class="">
+<p><strong>D7 (ORM):</strong>
+Более современный подход, возвращает объекты или массивы.</p>
+<div class="language-php codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-php codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">// Если работаете через EO (Entity Object)</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo $element-&gt;getName();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo $element-&gt;getPreviewText();</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">// Если работаете через fetch()</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">echo $row[&#x27;NAME&#x27;];</span><br></span></code></pre></div></div>
+</li>
+</ol>
+<h1>Типы свойств инфоблока (Properties)</h1>
+<p>В отличие от стандартных полей, свойства лежат в массиве <code>PROPERTIES</code> (если вы используете <code>GetList</code> с выборкой свойств) или <code>DISPLAY_PROPERTIES</code> (в компонентах).</p>
+<p>Обращение обычно выглядит так: <code>$arResult[&#x27;PROPERTIES&#x27;][&#x27;КОД_СВОЙСТВА&#x27;][&#x27;VALUE&#x27;]</code>.</p>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-базовые-типы-basic-types">1. Базовые типы (Basic Types)<a href="#1-базовые-типы-basic-types" class="hash-link" aria-label="Прямая ссылка на 1. Базовые типы (Basic Types)" title="Прямая ссылка на 1. Базовые типы (Basic Types)" translate="no">​</a></h3>
+<p>Это фундамент, встроенный в ядро.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="а-строка-string--s">А. Строка (String — S)<a href="#а-строка-string--s" class="hash-link" aria-label="Прямая ссылка на А. Строка (String — S)" title="Прямая ссылка на А. Строка (String — S)" translate="no">​</a></h4>
+<p>Самый простой тип. Может быть однострочным полем или многострочным (textarea).</p>
+<ul>
+<li class=""><strong>Что хранит:</strong> Любой текст до 64кб (обычно).</li>
+<li class=""><em>Как обращаться:</em> <code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE&#x27;]</code> вернет строку.</li>
+<li class=""><em>Особенность:</em> Если свойство множественное, вернет массив строк.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="б-число-number--n">Б. Число (Number — N)<a href="#б-число-number--n" class="hash-link" aria-label="Прямая ссылка на Б. Число (Number — N)" title="Прямая ссылка на Б. Число (Number — N)" translate="no">​</a></h4>
+<p>Используется для цифр, сортировки, габаритов.</p>
+<ul>
+<li class=""><strong>Что хранит:</strong> Целое (integer) или дробное (float) число.</li>
+<li class=""><em>Как обращаться:</em> <code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE&#x27;]</code>.</li>
+<li class=""><em>Зачем:</em> В отличие от строки, по этому типу можно правильно фильтровать (например, &quot;найти товары с шириной <code>&gt;</code> 100&quot;). Строка &quot;2&quot; в базе данных считается больше, чем &quot;100&quot;, а число — нет.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="в-список-list--l">В. Список (List — L)<a href="#в-список-list--l" class="hash-link" aria-label="Прямая ссылка на В. Список (List — L)" title="Прямая ссылка на В. Список (List — L)" translate="no">​</a></h4>
+<p>Выпадающий список, флажки (checkbox) или радио-кнопки.</p>
+<ul>
+<li class=""><strong>Структура:</strong> Это свойство имеет сложную структуру. У каждого варианта есть свой ID и текстовое значение.</li>
+<li class=""><em>Как обращаться:</em>
+<ul>
+<li class=""><code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE&#x27;]</code> — вернет <strong>текст</strong> значения (например, &quot;Красный&quot;).</li>
+<li class=""><code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE_ENUM_ID&#x27;]</code> — вернет <strong>ID</strong> выбранного варианта.</li>
+<li class=""><code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE_XML_ID&#x27;]</code> — вернет внешний код (надежнее для привязки в коде).</li>
+</ul>
+</li>
+<li class=""><em>Совет:</em> В коде (<code>if</code>) лучше проверять <code>XML_ID</code> или <code>ENUM_ID</code>, так как текст менеджер может поменять, и условие сломается.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="г-файл-file--f">Г. Файл (File — F)<a href="#г-файл-file--f" class="hash-link" aria-label="Прямая ссылка на Г. Файл (File — F)" title="Прямая ссылка на Г. Файл (File — F)" translate="no">​</a></h4>
+<p>Прикрепленные документы, инструкции или дополнительные фото (галерея).</p>
+<ul>
+<li class=""><strong>Что хранит:</strong> <strong>ID файла</strong> из таблицы <code>b_file</code>.</li>
+<li class=""><em>Как обращаться:</em> Аналогично полям <code>PREVIEW_PICTURE</code>.<!-- -->
+<ul>
+<li class="">В <code>[&#x27;VALUE&#x27;]</code> лежит число.</li>
+<li class="">Нужно использовать <code>CFile::GetPath($value)</code> для получения ссылки.</li>
+</ul>
+</li>
+<li class=""><em>Нюанс:</em> Очень часто используется как &quot;Множественное&quot;, тогда в <code>[&#x27;VALUE&#x27;]</code> лежит массив ID.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-привязки-links">2. Привязки (Links)<a href="#2-привязки-links" class="hash-link" aria-label="Прямая ссылка на 2. Привязки (Links)" title="Прямая ссылка на 2. Привязки (Links)" translate="no">​</a></h3>
+<p>Позволяют связывать элементы между собой, создавая структуру базы данных.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="а-привязка-к-элементам-link-to-element--e">А. Привязка к элементам (Link to Element — E)<a href="#а-привязка-к-элементам-link-to-element--e" class="hash-link" aria-label="Прямая ссылка на А. Привязка к элементам (Link to Element — E)" title="Прямая ссылка на А. Привязка к элементам (Link to Element — E)" translate="no">​</a></h4>
+<p>Связывает текущий элемент с другим элементом (даже из другого инфоблока).</p>
+<ul>
+<li class=""><strong>Пример:</strong> У товара &quot;iPhone&quot; есть свойство &quot;Похожие товары&quot;, где выбраны чехлы.</li>
+<li class=""><strong>Что хранит:</strong> <strong>ID привязанного элемента</strong>.</li>
+<li class=""><em>Как обращаться:</em> <code>$arProps[&#x27;LINKED_ITEMS&#x27;][&#x27;VALUE&#x27;]</code> вернет, например, <code>452</code>.</li>
+<li class=""><em>Проблема:</em> Чтобы вывести название или картинку привязанного чехла, вам нужно сделать отдельный запрос (<code>GetList</code>) по этому ID. Стандартный массив свойств не подтягивает данные связанного элемента автоматически.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="б-привязка-к-разделам-link-to-section--g">Б. Привязка к разделам (Link to Section — G)<a href="#б-привязка-к-разделам-link-to-section--g" class="hash-link" aria-label="Прямая ссылка на Б. Привязка к разделам (Link to Section — G)" title="Прямая ссылка на Б. Привязка к разделам (Link to Section — G)" translate="no">​</a></h4>
+<p>То же самое, но ссылается на папку (секцию).</p>
+<ul>
+<li class=""><strong>Пример:</strong> &quot;Дополнительные категории&quot; для товара.</li>
+<li class=""><strong>Что хранит:</strong> <strong>ID раздела</strong>.</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-популярные-пользовательские-типы-user-types">3. Популярные пользовательские типы (User Types)<a href="#3-популярные-пользовательские-типы-user-types" class="hash-link" aria-label="Прямая ссылка на 3. Популярные пользовательские типы (User Types)" title="Прямая ссылка на 3. Популярные пользовательские типы (User Types)" translate="no">​</a></h3>
+<p>Битрикс позволяет расширять типы свойств. Эти типы технически являются &quot;Строками&quot; (S), но имеют особую обработку интерфейса и логики.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="а-привязка-к-элементам-с-автозаполнением">А. Привязка к элементам с автозаполнением<a href="#а-привязка-к-элементам-с-автозаполнением" class="hash-link" aria-label="Прямая ссылка на А. Привязка к элементам с автозаполнением" title="Прямая ссылка на А. Привязка к элементам с автозаполнением" translate="no">​</a></h4>
+<p>Выглядит как поле ввода: начинаете писать название, система подсказывает варианты.</p>
+<ul>
+<li class=""><em>Зачем:</em> Если товаров 50 000, обычный выпадающий список (тип E) подвесит браузер. Этот тип подгружает данные AJAX-ом.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="б-html--визуальный-редактор">Б. HTML / Визуальный редактор<a href="#б-html--визуальный-редактор" class="hash-link" aria-label="Прямая ссылка на Б. HTML / Визуальный редактор" title="Прямая ссылка на Б. HTML / Визуальный редактор" translate="no">​</a></h4>
+<p>Позволяет форматировать текст внутри свойства (жирный, ссылки), как в &quot;Детальном описании&quot;.</p>
+<ul>
+<li class=""><em>Как обращаться:</em> Данные возвращаются массивом:<!-- -->
+<div class="language-php codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-php codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token plain">$arProps[&#x27;INFO&#x27;][&#x27;VALUE&#x27;][&#x27;TEXT&#x27;] // Сам контент</span><br></span><span class="token-line" style="color:#393A34"><span class="token plain">$arProps[&#x27;INFO&#x27;][&#x27;VALUE&#x27;][&#x27;TYPE&#x27;] // html или text</span><br></span></code></pre></div></div>
+</li>
+<li class=""><em>Важно:</em> Если выведете просто <code>[&#x27;VALUE&#x27;]</code>, увидите слово <code>Array</code>. Нужно выводить <code>[&#x27;VALUE&#x27;][&#x27;TEXT&#x27;]</code>.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="в-справочник-highload-блоки">В. Справочник (Highload-блоки)<a href="#в-справочник-highload-блоки" class="hash-link" aria-label="Прямая ссылка на В. Справочник (Highload-блоки)" title="Прямая ссылка на В. Справочник (Highload-блоки)" translate="no">​</a></h4>
+<p>Самый современный способ делать списки (Бренды, Цвета с иконками).</p>
+<ul>
+<li class=""><strong>Суть:</strong> Данные хранятся не в инфоблоке, а в отдельной Highload-таблице (очень быстро работает). Свойство хранит ссылку на запись в этой таблице (обычно <code>UF_XML_ID</code>).</li>
+<li class=""><em>Плюс:</em> Можно загрузить картинку для значения (например, иконку цвета или лого бренда), чего нельзя сделать в обычном списке (тип L).</li>
+</ul>
+<hr>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-краткая-памятка-по-множественности">4. Краткая памятка по множественности<a href="#4-краткая-памятка-по-множественности" class="hash-link" aria-label="Прямая ссылка на 4. Краткая памятка по множественности" title="Прямая ссылка на 4. Краткая памятка по множественности" translate="no">​</a></h3>
+<p>Любое свойство может быть <strong>множественным</strong> (Multiple).</p>
+<ol>
+<li class=""><strong>Если свойство одиночное:</strong>
+<code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE&#x27;]</code> = <code>&#x27;Строка&#x27;</code>;</li>
+<li class=""><strong>Если свойство множественное:</strong>
+<code>$arProps[&#x27;CODE&#x27;][&#x27;VALUE&#x27;]</code> = <code>[&#x27;Строка 1&#x27;, &#x27;Строка 2&#x27;, &#x27;Строка 3&#x27;]</code>;</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Страница документа"><a class="pagination-nav__link pagination-nav__link--prev" href="/MyDocs/bitrix/category/инфоблоки"><div class="pagination-nav__sublabel">Предыдущая страница</div><div class="pagination-nav__label">Инфоблоки</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/MyDocs/bitrix/infoblocks/infoblocksStructure"><div class="pagination-nav__sublabel">Следующая страница</div><div class="pagination-nav__label">Структура таблиц Инфоблоков в 1С-Битрикс</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#структура-инфоблоков-имеет-четкую-иерархию" class="table-of-contents__link toc-highlight">Структура инфоблоков имеет четкую иерархию:</a></li><li><a href="#основные-возможности" class="table-of-contents__link toc-highlight">Основные возможности</a><ul><li><a href="#1-основные-идентификаторы-identity" class="table-of-contents__link toc-highlight">1. Основные идентификаторы (Identity)</a></li><li><a href="#2-контент-и-наполнение-content" class="table-of-contents__link toc-highlight">2. Контент и наполнение (Content)</a></li><li><a href="#3-логика-показа-и-сортировка-display-logic" class="table-of-contents__link toc-highlight">3. Логика показа и Сортировка (Display Logic)</a></li><li><a href="#4-структура-и-привязки-structure" class="table-of-contents__link toc-highlight">4. Структура и Привязки (Structure)</a></li><li><a href="#5-служебная-информация-system-info" class="table-of-contents__link toc-highlight">5. Служебная информация (System Info)</a></li><li><a href="#6-краткая-памятка-по-получению-данных" class="table-of-contents__link toc-highlight">6. Краткая памятка по получению данных</a></li><li><a href="#1-базовые-типы-basic-types" class="table-of-contents__link toc-highlight">1. Базовые типы (Basic Types)</a></li><li><a href="#2-привязки-links" class="table-of-contents__link toc-highlight">2. Привязки (Links)</a></li><li><a href="#3-популярные-пользовательские-типы-user-types" class="table-of-contents__link toc-highlight">3. Популярные пользовательские типы (User Types)</a></li><li><a href="#4-краткая-памятка-по-множественности" class="table-of-contents__link toc-highlight">4. Краткая памятка по множественности</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2026 Built with Docusaurus.</div></div></div></footer></div>
 </body>
 </html>
