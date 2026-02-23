@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # `Hlblock`
 
 #### Класс: `Xpage\Core\Hlblock`
