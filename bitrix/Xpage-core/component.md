@@ -1,42 +1,90 @@
 ---
 sidebar_position: 2
 ---
-# Component
 
-## Вспомогательные методы (для использования внутри логики компонента)
+# `Component`
 
-| Функция | Что делает | Пример использования |
-| :--- | :--- | :--- |
-| **getGlobalApplication** | Возвращает объект `$APPLICATION`. Заменяет `global $APPLICATION`. | `$this->getGlobalApplication()->SetTitle('Заголовок');` |
-| **getGlobalUser** | Возвращает объект `$USER`. Заменяет `global $USER`. | `if ($this->getGlobalUser()->IsAuthorized()) { ... }` |
-| **isAjax** | Проверяет, является ли текущий запрос AJAX-запросом. | `if ($this->isAjax()) { $this->getGlobalApplication()->RestartBuffer(); }` |
-| **getRequest** | Возвращает объект текущего запроса (D7 `Main\HttpRequest`). | `$val = $this->getRequest()->getPost('form_id');` |
-| **convertKeysToCamel** | Рекурсивно переводит ключи массива из `SNAKE_CASE` в `camelCase`. | `$this->convertKeysToCamel(['USER_NAME' => 'Ivan']); // ['userName' => 'Ivan']` |
-| **getIblockIdByApiCode** | Получает числовой ID инфоблока по его строковому API_CODE. | `$id = $this->getIblockIdByApiCode('products');` |
-| **getRouteByName** | Находит объект маршрута по его полному имени. | `$route = $this->getRouteByName('api.v1.order.create');` |
+#### Класс: `Xpage\Core\Component`
+**Назначение**: Абстрактный слой над `CBitrixComponent`. Упрощает написание кода компонентов, предоставляя готовые инструменты для работы с современным ядром D7 и автоматизируя рутинные задачи (смена регистров ключей, получение списков для настроек).
+
+**Зависимости**:
+*   Модули: `iblock`, `catalog`.
+*   Ядро: `Bitrix\Main`.
+*   Внутренние классы: `Xpage\Core\Iblock`.
 
 ---
 
-## Методы метаданных (для `.parameters.php` и админки)
+## 1. Работа с окружением и запросами
+*   **`getGlobalApplication()` / `getGlobalUser()`**: Обертки для доступа к глобальным объектам `$APPLICATION` и `$USER` в объектном стиле.
+*   **`isAjax()`**: Проверяет, является ли текущий запрос AJAX-запросом.
+*   **`getRequest()`**: Возвращает объект текущего HTTP-запроса.
+*   **`getRouter()` / `getRouteByName($name)`**: Методы для работы с новой системой роутинга Битрикс (получение объекта роутера или конкретного маршрута по его имени).
 
-Эти методы в основном `static`, так как они вызываются до инициализации объекта компонента.
+## 2. Трансформация данных
+*   **`convertKeysToCamel(array $data)`**: Рекурсивно преобразует ключи массива из `snake_case` (или `UPPER_CASE`) в `camelCase`. 
+    *   *Пример*: `PROPERTY_VALUE` -> `propertyValue`. 
+    *   Полезно для подготовки JSON-ответов для фронтенда.
 
-| Функция | Что делает | Пример использования |
-| :--- | :--- | :--- |
-| **getIblockTypes** | Список всех типов инфоблоков в формате `['ID' => 'Название']`. | `"TYPE" => "LIST", "VALUES" => Base::getIblockTypes()` |
-| **getIblocks** | Список активных инфоблоков (только с API_CODE) конкретного типа. | `Base::getIblocks('catalog') // ['products_api' => 'Каталог товаров']` |
-| **getIblockFields** | Возвращает все доступные поля таблицы элементов инфоблока. | `Base::getIblockFields() // ['ID' => 'ID', 'NAME' => 'NAME' ...]` |
-| **getIblockProperties**| Список символьных кодов свойств для конкретного инфоблока (по API_CODE). | `Base::getIblockProperties('cars_api')` |
-| **getRouteNames** | Возвращает список всех зарегистрированных в системе имен роутов. | `"ROUTE" => ["TYPE" => "LIST", "VALUES" => Base::getRouteNames()]` |
-| **getCatalogIblockApiCodes** | Массив API-кодов всех инфоблоков, являющихся торговыми каталогами. | `$catalogs = Base::getCatalogIblockApiCodes();` |
-| **getPriceTypes** | Список типов цен из модуля Catalog в формате `['XML_ID' => 'Название']`. | `Base::getPriceTypes() // ['BASE' => 'Розничная цена']` |
-| **getPriceFields** | Возвращает список всех полей таблицы цен (Catalog\PriceTable). | `Base::getPriceFields()` |
-| **getProductFields** | Возвращает список всех полей таблицы товаров (Catalog\ProductTable). | `Base::getProductFields()` |
+## 3. Методы для параметров компонента (Инфоблоки)
+Данные методы обычно используются в файле `.parameters.php` для создания выпадающих списков в настройках компонента:
+*   **`getIblockTypes()`**: Список типов инфоблоков.
+*   **`getIblocks($iblockType)`**: Список активных инфоблоков конкретного типа, у которых задан `API_CODE`.
+*   **`getIblockFields()`**: Список всех системных полей элементов (из `ElementTable`).
+*   **`getIblockProperties($ibApiCode)`**: Список кодов свойств конкретного инфоблока.
+
+## 4. Методы для параметров компонента (Каталог)
+*   **`getCatalogIblockApiCodes()`**: Возвращает `API_CODE` всех инфоблоков, которые являются торговыми каталогами.
+*   **`getPriceTypes()`**: Список типов цен (из `Catalog\GroupTable`).
+*   **`getPriceFields()` / `getProductFields()`**: Списки доступных полей цен и товаров для выбора в настройках.
 
 ---
 
-## Резюме для документации:
-**`Xpage\Core\Component`** — базовый класс для всех компонентов проекта.
-1. **Унификация:** Все наследники имеют стандартный доступ к ядру Битрикс без использования `global`.
-2. **Фронтенд-friendly:** С помощью `convertKeysToCamel` данные подготавливаются под стандарты JS (JSON API).
-3. **Автоматизация админки:** Статические методы позволяют быстро наполнять выпадающие списки в настройках компонентов (выбор инфоблоков, свойств, цен), опираясь на современные API-коды инфоблоков.
+## Примеры использования
+
+### Использование в логике компонента (`class.php`)
+```php
+class MyComponent extends \Xpage\Core\Component 
+{
+    public function executeComponent()
+    {
+        // Проверка AJAX
+        if ($this->isAjax()) {
+            $this->getGlobalApplication()->RestartBuffer();
+            // ... логика ...
+        }
+
+        // Работа с данными
+        $rawElement = ['ID' => 1, 'NAME' => 'Test', 'DETAIL_TEXT' => '...'];
+        $this->arResult['ITEM'] = $this->convertKeysToCamel($rawElement); 
+        // Результат: ['id' => 1, 'name' => 'Test', 'detailText' => '...']
+
+        $this->includeComponentTemplate();
+    }
+}
+```
+
+### Использование в `.parameters.php`
+```php
+if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED !== true) die();
+
+use Xpage\Core\Component;
+
+$arComponentParameters = [
+    "PARAMETERS" => [
+        "IBLOCK_TYPE" => [
+            "PARENT" => "BASE",
+            "NAME" => "Тип инфоблока",
+            "TYPE" => "LIST",
+            "VALUES" => Component::getIblockTypes(),
+            "REFRESH" => "Y",
+        ],
+        "IBLOCK_API_CODE" => [
+            "PARENT" => "BASE",
+            "NAME" => "API код инфоблока",
+            "TYPE" => "LIST",
+            "VALUES" => Component::getIblocks($arCurrentValues["IBLOCK_TYPE"]),
+        ],
+    ],
+];
+```
+
