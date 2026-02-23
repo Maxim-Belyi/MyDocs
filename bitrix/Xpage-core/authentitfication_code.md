@@ -14,7 +14,7 @@ sidebar_position: 11
 *   Модуль «Служба сообщений» (для SMS) и стандартный почтовый модуль.
 ---
 
-## 1. `sendCodeToPhone(string $recipient, string $action)`
+##  `sendCodeToPhone(string $recipient, string $action)`
 Метод для отправки кода на телефон.
 *   **Валидация**: Использует битриксовый `PhoneNumber\Parser` для проверки корректности номера (формат E164, например, `+79991234567`).
 *   **Анти-флуд**: Вызывает `isValidTimer`, чтобы пользователь не мог запрашивать SMS чаще, чем раз в 60 секунд.
@@ -22,18 +22,18 @@ sidebar_position: 11
 *   **Хранение**: Записывает код в таблицу `AuthenticationCodeTable` (это ORM-сущность проекта).
 *   **Отправка**: Использует стандартные SMS-события Битрикса (`Sms\Event`). Вам нужно будет создать тип SMS-события `XPAGE_CORE_AUTH_CODE_PHONE` в админке.
 
-## 2. `sendCodeToEmail($recipient, $action, $eventName)`
+##  `sendCodeToEmail($recipient, $action, $eventName)`
 Аналог метода для телефона, но для электронной почты.
 *   Проверяет email через `filter_var`.
 *   Отправляет письмо через `Mail\Event::send`.
 
-## 3. `codeChecking($recipient, $action, $code)`
+##  `codeChecking($recipient, $action, $code)`
 Самый важный метод для проверки того, что ввел пользователь.
 *   **Нормализация**: Если передан телефон, он приводится к единому формату E164, чтобы поиск в базе был точным.
 *   **Проверка**: Ищет последнюю запись в БД для этого адресата и этого действия.
 *   **Очистка**: Если код верный, метод вызывает `clearTable`, удаляя все старые коды этого пользователя, чтобы их нельзя было использовать повторно.
 
-## 4. `isValidTimer($recipient, $action)` (private)
+##  `isValidTimer($recipient, $action)` (private)
 Смотрит в базу данных на колонку `DATETIME`. Если с момента последней отправки прошло меньше 60 секунд (`PHONE_CODE_RESEND_INTERVAL`), метод вернет количество секунд, которое нужно подождать.
 
 ---
