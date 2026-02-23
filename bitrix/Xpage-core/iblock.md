@@ -13,13 +13,13 @@ sidebar_position: 4
 
 ---
 
-## 1. Идентификация Инфоблоков
+## Идентификация Инфоблоков
 *   **`getIblockIdByApiCode(string $apiCode)`**: Возвращает ID инфоблока по его `API_CODE`.
 *   **`getIblockCodeById(int $iblockId)`**: Возвращает символьный код (`CODE`) инфоблока по его ID.
 *   **`getIblockApiCodeById(int $iblockId)`**: Возвращает `API_CODE` инфоблока по его ID.
 
 
-## 2. Работа со свойствами
+## Работа со свойствами
 *   **`getProperties(string $iblockCode)`**: Получает список всех свойств инфоблока (ID, код, тип, множественность).
     *   Если свойство является списком (`TYPE_LIST`), метод автоматически подгружает все варианты значений через `getMapEnumPropertyValues`.
 *   **`getMapEnumPropertyValues(int $propertyId)`**: Создает карту соответствий для свойств типа «Список».
