@@ -1,55 +1,128 @@
 ---
-sidebar_position: 1
+sidebar_position: 99
 ---
 
 # Roadmap:
 
-## 1. Базовые типы и конструкции (Основы)
-Здесь редко валят, но нужно уверенно отвечать на базовые вещи.
-*   **Типы данных:** Какие бывают, их размер в памяти, значения по умолчанию (zero-values).
-*   **Строки (Strings):** Что такое строка в Go (указатель и длина). Разница между `byte` и `rune`. Как работает UTF-8 под капотом. Неизменяемость (immutability) строк. Конкатенация и `strings.Builder`.
-*   **Управляющие конструкции:** Особенности `for`, `switch` (fallthrough), `if`, `defer`, `panic`, `recover`.
-*   **Функции:** Именованные возвращаемые значения, замыкания (closures) и связанные с ними ловушки (например, захват переменной цикла).
+## Список готовых
 
-## 2. Встроенные структуры данных 
-*Мы с тобой уже начали это разбирать, и ты молодец, что сразу копаешь глубоко!*
-*   **Массивы vs Слайсы:** Отличия. Устройство слайса (указатель, `len`, `cap`).
-*   **Алгоритм роста слайса:** Амортизированная сложность `append`, утечки памяти при создании под-слайсов (`reslicing`).
-*   **Map (Хеш-таблицы):** Внутреннее устройство (`hmap`, бакеты, эвакуация данных, коллизии).
-*   **Потокобезопасность:** Почему map не потокобезопасна и как это решать (`sync.RWMutex`, `sync.Map`).
+### Корень
+- `intro.md`
+- `roadmap.md`
 
-## 3. Указатели, Структуры и ООП в Go
-В Go нет классического ООП, поэтому спрашивают, как его имитировать.
-*   **Указатели:** Разница между передачей по значению и по указателю. Когда использовать одно, а когда другое.
-*   **Структуры (`struct`):** Выравнивание памяти в структурах (Memory Alignment / Padding) — *частый вопрос на Middle-позиции для оптимизации памяти*.
-*   **Методы:** Value receivers vs Pointer receivers.
-*   **Композиция:** Встраивание (embedding) структур вместо наследования.
+### `architecture`
+- `RestApi.md`
+- `gRPC.md`
 
-## 4. Интерфейсы (Основа архитектуры Go)
-Это топ-2 по популярности тема после многопоточности.
-*   **Что такое интерфейс:** Duck typing ("Утиная типизация"). Внутреннее устройство интерфейса (две ссылки: `itab` и `data`).
-*   **Пустой интерфейс (`interface{}` / `any`):** Что это такое и когда применять. Type assertion и Type switch.
-*   **Ловушка с `nil`:** Почему интерфейс, которому присвоен `nil`-указатель, не равен `nil` (очень частый вопрос с подвохом).
+### `array`
+- `array_length.md`
+- `multidimensional_array.md`
+- `one-dimensional_array.md`
 
-## 5. Многопоточность (Concurrency) — Сердце Go
-Здесь задают больше всего вопросов и дают практические задачи на написание кода.
-*   **Горутины:** Чем горутина отличается от потока ОС. Планировщик Go (GMP-модель: Goroutine, Machine, Processor).
-*   **Каналы (Channels):** Буферизированные и небуферизированные. Чтение/запись в закрытый канал, запись в `nil` канал. Блокировки.
-*   **Конструкция `select`:** Как работает, `default` кейс, таймауты.
-*   **Примитивы синхронизации (пакет `sync`):** `Mutex`, `RWMutex`, `WaitGroup`, `atomic`, `Once`, `Pool`. Что выбрать: каналы или мьютексы?
-*   **Состояния гонки (Data Race):** Что это такое и как искать (`-race` флаг). Дедлоки (Deadlocks).
+### `conditionals`
+- `fallthrough.md`
+- `if-else.md`
+- `switch.md`
 
-## 6. Управление памятью (Under the hood)
-*   **Стек и Куча (Stack vs Heap):** Что где выделяется.
-*   **Escape Analysis (Анализ побега):** Как компилятор Go решает, куда положить переменную.
-*   **Garbage Collector (GC):** Как работает (алгоритм Mark and Sweep / Tricolor), фазы работы сборщика, что такое STW (Stop The World) и GC Pressure.
+### `data-types`
+- `composite_types.md`
+- `data-types.md`
+- `functions.md`
+- `int.md`
+- `interface.md`
+- `pointers.md`
+- `reciviers.md`
+- `runes_bytes.md`
+- `string.md`
 
-## 7. Экосистема и стандартные пакеты
-*   **Ошибки (Errors):** Интерфейс `error`. Оборачивание ошибок (wrapping). Функции `errors.Is` и `errors.As`.
-*   **Пакет `context`:** Зачем нужен, как работает дерево контекстов (`WithCancel`, `WithTimeout`, `WithValue`). *Обязательно спросят, как корректно завершать горутины по таймауту.*
-*   **Тестирование:** Пакет `testing`. Table-driven tests. Бенчмарки. Mock-и.
+### `errors`
+- `context.md`
+- `error_handling.md`
+- `panic.md`
+- `testing.md`
 
-## 8. Архитектура и Best Practices (Для уровня уверенного Junior/Middle)
-*   **Dependency Injection (DI):** Как передавать зависимости.
-*   **Чистая архитектура (Clean Architecture):** Слои (Хендлеры, Бизнес-логика, Репозитории).
-*   **Go Modules:** Как работает `go.mod` и `go.sum`.
+### `fmt`
+- `complex.md`
+
+### `go_routine`
+- `channels.md`
+- `channels_type.md`
+- `data_races.md`
+- `goroutine.md`
+
+### `loop`
+- `break-continue.md`
+- `for.md`
+- `nested_loop.md`
+
+### `map`
+- `map-O_notation.md`
+- `map.md`
+- `map_memory_leak.md`
+- `synch_map.md`
+
+### `o-notation`
+- `o-notation.md`
+
+### `slice`
+- `allocation.md`
+- `capacity.md`
+- `slice.md`
+- `slices-O_notation.md`
+- `slices_relocation.md`
+
+> Файлы типа `_category_.json` не считаются статьями, это метаданные Docusaurus.
+
+---
+
+## Рекомендуемый список тем 
+### Ядро языка и синтаксис
+- `structs.md` — структуры и методы
+- `methods.md` — методы и привязка к типам
+- `embedding.md` — встраивание типов и композиция
+- `interfaces-advanced.md` — глубокие интерфейсы, пустой интерфейс, типы
+- `generics.md` — обобщения (Go 1.18+)
+- `reflection.md` — пакет `reflect`
+
+### Пакеты, модули и экосистема
+- `packages.md` — пакеты и область видимости
+- `modules.md` — `go mod`, зависимости и версии
+- `project-structure.md` — организация Go-проекта
+
+### Инструменты и разработка
+- `toolchain.md` — `go build`, `go run`, `go install`
+- `go_test.md` — тестирование, бенчмарки, покрытие
+- `go_fmt.md` / `go_vet.md` — `gofmt`, `go vet`
+- `profiling.md` — `pprof`, профилирование, оптимизация
+- `race-detector.md` — `-race`
+
+### Стандартная библиотека
+- `io.md` — `io`, `os`, `bufio`
+- `net.md` — работа с сетью
+- `net_http.md` — HTTP-серверы и клиенты
+- `encoding_json.md` — JSON
+- `time.md` — таймеры, дедлайны, форматирование
+- `os_file.md` — файловые операции
+- `path_filepath.md`
+
+### Конкурентность
+- `select.md`
+- `sync.md` — `Mutex`, `WaitGroup`, `RWMutex`
+- `worker-pools.md`
+- `concurrency-patterns.md`
+- `context-cancellation.md` — расширение `context.md`
+
+### Паттерны и идиомы
+- `error-wrapping.md` — `errors.Is`, `errors.As`, оборачивание ошибок
+- `logging.md`
+- `dependency-injection.md`
+- `best-practices.md`
+
+### Архитектура и прикладные темы
+- `cli.md` — создание консольных утилит
+- `database.md` — работа с БД
+- `microservices.md`
+- `security.md` — безопасность и уязвимости
+
+---
+
