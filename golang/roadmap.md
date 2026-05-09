@@ -10,6 +10,9 @@ sidebar_position: 99
 - `intro.md`
 - `roadmap.md`
 
+### `advanced`
+- `reflection.md`
+
 ### `architecture`
 - `RestApi.md`
 - `gRPC.md`
@@ -18,6 +21,14 @@ sidebar_position: 99
 - `array_length.md`
 - `multidimensional_array.md`
 - `one-dimensional_array.md`
+
+### `concurency`
+- `channels.md`
+- `channels_type.md`
+- `context.md`
+- `data_races.md`
+- `goroutine.md`
+- `sync_primitives.md`
 
 ### `conditionals`
 - `fallthrough.md`
@@ -28,27 +39,24 @@ sidebar_position: 99
 - `composite_types.md`
 - `data-types.md`
 - `functions.md`
+- `generics.md`
 - `int.md`
 - `interface.md`
+- `interface_internals.md`
 - `pointers.md`
 - `reciviers.md`
 - `runes_bytes.md`
 - `string.md`
 
 ### `errors`
-- `context.md`
+- `context.md` (legacy, see concurency/context.md)
+- `defer_panic_recover.md`
 - `error_handling.md`
 - `panic.md`
 - `testing.md`
 
 ### `fmt`
 - `complex.md`
-
-### `go_routine`
-- `channels.md`
-- `channels_type.md`
-- `data_races.md`
-- `goroutine.md`
 
 ### `loop`
 - `break-continue.md`
@@ -61,6 +69,12 @@ sidebar_position: 99
 - `map_memory_leak.md`
 - `synch_map.md`
 
+### `memory`
+- `garbage_collector.md`
+
+### `modules`
+- `go_modules.md`
+
 ### `o-notation`
 - `o-notation.md`
 
@@ -71,29 +85,25 @@ sidebar_position: 99
 - `slices-O_notation.md`
 - `slices_relocation.md`
 
+### `testing`
+- `advanced_testing.md`
+
 > Файлы типа `_category_.json` не считаются статьями, это метаданные Docusaurus.
 
 ---
 
 ## Рекомендуемый список тем 
 ### Ядро языка и синтаксис
-- `structs.md` — структуры и методы
-- `methods.md` — методы и привязка к типам
+- `structs.md` — структуры
 - `embedding.md` — встраивание типов и композиция
-- `interfaces-advanced.md` — глубокие интерфейсы, пустой интерфейс, типы
-- `generics.md` — обобщения (Go 1.18+)
-- `reflection.md` — пакет `reflect`
 
 ### Пакеты, модули и экосистема
 - `packages.md` — пакеты и область видимости
-- `modules.md` — `go mod`, зависимости и версии
 - `project-structure.md` — организация Go-проекта
 
 ### Инструменты и разработка
 - `toolchain.md` — `go build`, `go run`, `go install`
-- `go_test.md` — тестирование, бенчмарки, покрытие
 - `go_fmt.md` / `go_vet.md` — `gofmt`, `go vet`
-- `profiling.md` — `pprof`, профилирование, оптимизация
 - `race-detector.md` — `-race`
 
 ### Стандартная библиотека
@@ -102,18 +112,13 @@ sidebar_position: 99
 - `net_http.md` — HTTP-серверы и клиенты
 - `encoding_json.md` — JSON
 - `time.md` — таймеры, дедлайны, форматирование
-- `os_file.md` — файловые операции
-- `path_filepath.md`
 
 ### Конкурентность
 - `select.md`
-- `sync.md` — `Mutex`, `WaitGroup`, `RWMutex`
 - `worker-pools.md`
 - `concurrency-patterns.md`
-- `context-cancellation.md` — расширение `context.md`
 
 ### Паттерны и идиомы
-- `error-wrapping.md` — `errors.Is`, `errors.As`, оборачивание ошибок
 - `logging.md`
 - `dependency-injection.md`
 - `best-practices.md`
