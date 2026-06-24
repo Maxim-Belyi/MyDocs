@@ -79,6 +79,15 @@ const config = {
         searchResultContextMaxLength: 50,
       },
     ],
+     [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'linuxSidebar', 
+        path: 'linux', 
+        routeBasePath: 'linux', 
+        sidebarPath: './sidebarsLinux.js', 
+      },
+    ],
     [
       '@docusaurus/plugin-content-docs',
       {
