@@ -83,8 +83,8 @@ const config = {
       '@docusaurus/plugin-content-docs',
       {
         id: 'linuxSidebar', 
-        path: 'linux', 
-        routeBasePath: 'linux', 
+        path: 'Linux', 
+        routeBasePath: 'Linux', 
         sidebarPath: './sidebarsLinux.js', 
       },
     ],
