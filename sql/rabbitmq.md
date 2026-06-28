@@ -2,11 +2,7 @@
 sidebar_position: 15
 ---
 
-# RabbitMQ: Глубокое погружение
-
-Базовое сравнение RabbitMQ и Kafka уже рассмотрено в статье «Брокеры сообщений». Здесь разберём **внутреннюю архитектуру** RabbitMQ, типы Exchange, паттерны использования и практические нюансы.
-
----
+# RabbitMQ
 
 ## 1. Архитектура: Exchange, Queue, Binding
 
@@ -31,15 +27,13 @@ Producer → Exchange → [Binding/Routing] → Queue → Consumer
 
 Если Consumer упал до отправки ACK — RabbitMQ автоматически вернёт сообщение в очередь и доставит его другому Consumer.
 
-> **Интервью-совет:** ACK — это механизм гарантии **At-least-once delivery**. Помните об идемпотентности вашего Consumer!
+> ACK — это механизм гарантии **At-least-once delivery**. Помните об идемпотентности вашего Consumer!
 
 ---
 
-## 2. Типы Exchange: Сердце маршрутизации
+## 2. Типы Exchange
 
-Это самый частый вопрос по RabbitMQ на собеседованиях.
-
-### Direct Exchange (по умолчанию)
+### Direct Exchange
 
 Сообщение идёт в очередь, **Routing Key которой точно совпадает** с Routing Key сообщения.
 
