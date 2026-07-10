@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmy_docs=self.webpackChunkmy_docs||[]).push([["4755"],{3824(s){s.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"bitrixSidebar"}')}}]);
