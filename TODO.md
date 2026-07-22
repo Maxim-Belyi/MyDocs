@@ -44,6 +44,7 @@
   - [ ] Группировка и агрегаты (`sql/group-by.md`): `GROUP BY`, `HAVING`, `COUNT`, `SUM`, `AVG`, `MIN`, `MAX`. Порядок выполнения SQL-запроса (`FROM` -> `WHERE` -> `GROUP BY` -> `HAVING` -> `SELECT` -> `ORDER BY` -> `LIMIT`)
   - [ ] Оконные функции (`sql/window-functions.md`): `OVER()`, `PARTITION BY`, `ROW_NUMBER()`, `RANK()`, `LAG()`, `LEAD()`
   - [ ] Индексы и оптимизация (`sql/indexes.md`): `B-Tree` и `Hash`-индексы, составные индексы (порядок колонок), селективность, анализ через `EXPLAIN ANALYZE`
+  - [ ] **Дедупликация в OLTP vs OLAP (`sql/deduplication-olap-oltp.md`)**: почему `UNIQUE` индексы подходят для PostgreSQL (строковые БД), но замедляют ClickHouse (колоночные БД); асинхронная дедупликация через `ReplacingMergeTree` в ClickHouse; паттерн двухуровневой дедупликации (быстрый кэш в `Redis` + гарантированное схлопывание в `ReplacingMergeTree`)
 - [ ] **Дополнение существующих статей**
   - [ ] Первичный ключ (`sql/primary-key.md`): добавить синтаксис создания в SQL (`PRIMARY KEY`), автоинкремент (`SERIAL` / `AUTO_INCREMENT`), сравнение суррогатных (`ID`/`UUID`) и естественных ключей, составные ключи
 
