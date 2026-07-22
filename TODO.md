@@ -34,6 +34,13 @@
 - [ ] **Модули и структура проекта**
   - [ ] Go Modules (`go.mod`, `go.sum`), управление зависимостями
   - [ ] Standard Project Layout (назначение директорий `cmd/`, `internal/`, `pkg/`)
+- [ ] **Работа с RabbitMQ в Go (`golang/rabbitmq/` — пакет `amqp091-go`)**
+  - [ ] Жизненный цикл канала (`golang/rabbitmq/channel-lifecycle.md`): `amqp.Dial`, создание `conn.Channel()`, `ch.Close`, `ch.NotifyClose(chan *amqp.Error)`, режим подтверждений (`ch.Confirm`, `ch.NotifyPublish`, `ch.NotifyReturn`)
+  - [ ] Объявление топологии: Очереди, Обменники и Биндинги (`golang/rabbitmq/topology.md`): `ch.QueueDeclare` (аргументы `durable`, `autoDelete`, `exclusive`, `noWait`, таблица `args amqp.Table` для DLX/TTL/Priority), `ch.ExchangeDeclare` (`direct`, `fanout`, `topic`, `headers`), `ch.QueueBind` / `ch.QueueUnbind` / `ch.ExchangeBind`
+  - [ ] Публикация сообщений (`golang/rabbitmq/publish.md`): `ch.PublishWithContext` (аргументы и разбор всех полей структуры `amqp.Publishing`: `Headers`, `ContentType`, `DeliveryMode`, `MessageId`, `CorrelationId`), отложенное подтверждение через `ch.PublishWithDeferredConfirmWithContext`
+  - [ ] Потребление сообщений (`golang/rabbitmq/consume.md`): `ch.ConsumeWithContext` (аргументы, конкурентное чтение из `<-chan amqp.Delivery` в пуле горутин), синхронный pull через `ch.Get`
+  - [ ] **QoS (Quality of Service) и Prefetch (`golang/rabbitmq/qos-prefetch.md`)**: метод `ch.Qos(prefetchCount, prefetchSize, global)` — как работает управление потоком в AMQP; разница между `prefetchSize` (байты) и `prefetchCount` (сообщения); поведение флага `global` (`false` — лимит на каждого консьюмера, `true` — общий лимит на весь канал); формулы и стратегии расчета оптимального prefetch для CPU-bound и I/O-bound задач в горутинах
+  - [ ] Подтверждение и отклонение сообщений (`golang/rabbitmq/acknowledgements.md`): методы канала (`ch.Ack`, `ch.Nack`, `ch.Reject`) и методы сообщения (`msg.Ack`, `msg.Nack`, `msg.Reject`), управление параметрами `deliveryTag`, `multiple` и `requeue`
 
 ---
 
