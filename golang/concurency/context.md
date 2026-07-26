@@ -156,6 +156,66 @@ func processItems(ctx context.Context, items []Item) error {
 
 ---
 
+## 7. `WithCancelCause` и `context.Cause` (Go 1.20+)
+
+Стандартный `WithCancel` при отмене через `cancel()` всегда возвращает одно и то же значение из `ctx.Err()` — `context.Canceled`. Это не позволяет передать конкретную причину остановки вызывающему коду.
+
+`context.WithCancelCause` решает эту проблему: функция `cancel` принимает аргумент типа `error`, который затем можно извлечь через `context.Cause(ctx)`.
+
+```go
+ctx, cancel := context.WithCancelCause(context.Background())
+
+go func() {
+    // ... долгая работа ...
+    // Отменяем контекст с конкретной причиной
+    cancel(errors.New("превышен лимит попыток подключения к БД"))
+}()
+
+<-ctx.Done()
+
+// ctx.Err() — всегда возвращает только context.Canceled (неинформативно)
+fmt.Println(ctx.Err()) // context.Canceled
+
+// context.Cause(ctx) — возвращает именно то, что передали в cancel(...)
+fmt.Println(context.Cause(ctx)) // превышен лимит попыток подключения к БД
+```
+
+**Разница между `ctx.Err()` и `context.Cause(ctx)`:**
+
+| | `ctx.Err()` | `context.Cause(ctx)` |
+| :--- | :--- | :--- |
+| При `cancel(nil)` | `context.Canceled` | `context.Canceled` |
+| При `cancel(err)` | `context.Canceled` | переданный `err` |
+| При истечении таймаута | `context.DeadlineExceeded` | `context.DeadlineExceeded` |
+
+Если в `cancel` передан `nil`, поведение идентично обычному `WithCancel`.
+
+**Практический сценарий применения** — оркестрация группы горутин, где нужно понять, какая именно из них завершилась с ошибкой и почему, не прибегая к отдельному каналу ошибок:
+
+```go
+func runPipeline(ctx context.Context) error {
+    ctx, cancel := context.WithCancelCause(ctx)
+    defer cancel(nil) // nil при штатном завершении
+
+    go func() {
+        if err := fetchFromAPI(ctx); err != nil {
+            cancel(fmt.Errorf("fetchFromAPI: %w", err))
+        }
+    }()
+
+    go func() {
+        if err := writeToDatabase(ctx); err != nil {
+            cancel(fmt.Errorf("writeToDatabase: %w", err))
+        }
+    }()
+
+    <-ctx.Done()
+    return context.Cause(ctx) // Вернет ошибку от той горутины, что упала первой
+}
+```
+
+---
+
 ## Итог
 
 | Функция | Когда использовать |
