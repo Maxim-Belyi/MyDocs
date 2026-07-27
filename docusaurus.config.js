@@ -1,5 +1,7 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
 // import docsearch from '@docsearch/js';
 // import '@docsearch/css';
 
@@ -40,10 +42,10 @@ const config = {
       ({
         docs: {
           sidebarPath: './sidebars.js',
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Maxim-Belyi/MyDocs/tree/main/',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: {
           showReadingTime: false,
@@ -51,14 +53,13 @@ const config = {
             type: ['rss', 'atom'],
             xslt: true,
           },
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/Maxim-Belyi',
-          // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -79,13 +80,15 @@ const config = {
         searchResultContextMaxLength: 50,
       },
     ],
-     [
+    [
       '@docusaurus/plugin-content-docs',
       {
         id: 'linuxSidebar', 
         path: 'Linux', 
         routeBasePath: 'Linux', 
-        sidebarPath: './sidebarsLinux.js', 
+        sidebarPath: './sidebarsLinux.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
     [
@@ -94,7 +97,9 @@ const config = {
         id: 'git', 
         path: 'git', 
         routeBasePath: 'git', 
-        sidebarPath: './sidebarsGit.js', 
+        sidebarPath: './sidebarsGit.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
         [
@@ -103,7 +108,9 @@ const config = {
         id: 'sqlSidebar', 
         path: 'sql', 
         routeBasePath: 'sql', 
-        sidebarPath: './sidebarsSQL.js', 
+        sidebarPath: './sidebarsSQL.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
     [
@@ -112,7 +119,9 @@ const config = {
         id: 'golang', 
         path: 'golang', 
         routeBasePath: 'golang', 
-        sidebarPath: './sidebarsGolang.js', 
+        sidebarPath: './sidebarsGolang.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
     //  [
@@ -130,7 +139,9 @@ const config = {
         id: 'algorithmsSidebar', 
         path: 'algorithms', 
         routeBasePath: 'algorithms', 
-        sidebarPath: './sidebarsAlgorithms.js', 
+        sidebarPath: './sidebarsAlgorithms.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
     [
@@ -139,9 +150,19 @@ const config = {
         id: 'interviewSidebar', 
         path: 'interview', 
         routeBasePath: 'interview', 
-        sidebarPath: './sidebarsInterview.js', 
+        sidebarPath: './sidebarsInterview.js',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
+  ],
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css',
+      type: 'text/css',
+      integrity: 'sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn',
+      crossorigin: 'anonymous',
+    },
   ],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
