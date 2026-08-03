@@ -176,6 +176,9 @@ err = ch.Qos(
 ### Request/Reply (RPC over RabbitMQ)
 Синхронный RPC поверх асинхронного брокера. Producer отправляет сообщение и ждёт ответа в специальной очереди `reply_to`. Используется редко — если нужен RPC, лучше взять gRPC.
 
+### Ingestion Pipeline (Буферизация перед ClickHouse / OLAP)
+Сглаживание пиковых нагрузок (Backpressure) и агрегация данных пачками перед записью в аналитические БД. Подробнее о том, почему прямая вставка без брокера убивает ClickHouse и как реализовать этот паттерн на Go, читайте в статье **[Архитектура Ingestion Pipeline: RabbitMQ + ClickHouse](/MyDocs/sql/rabbit_vs_clickhouse)**.
+
 ---
 
 ## 7. Порты RabbitMQ
